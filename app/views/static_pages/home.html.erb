@@ -1,25 +1,47 @@
+
+<head>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+</head>
+
+    
+
+<div class ="center hero-unit" id="viz"></div>
 <div class="center hero-unit">
-  <h1>Welcome to the Sample App</h1>
+	<!-- <p id="demo">Pls dont press dat button</p>
+	 <button class="btn btn-large btn-primary" onclick="myFunction()">Click on me</button> -->
 
-  <h2>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
+	<%= link_to image_tag("Australia.jpg", alt: "Australia"), 'http://reddit.com/r/leagueoflegends/' %>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
 
-<div class="center hero-unit">
-	<p id="demo">A Paragraph.</p>
-	<button class="btn btn-large btn-primary" onclick="myFunction()">Try it</button>
-</div>
-
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<%= link_to image_tag("derp-photo.jpg", alt: "Rails", width: "100", height: "100"), 'http://reddit.com/r/leagueoflegends/' %>
 
 <script>
 function myFunction()
 {
-document.getElementById("demo").innerHTML="My First JavaScript Function";
+document.getElementById("demo").innerHTML="i die";
 }
+</script>
+
+<script type="text/javascript">
+        var jsonRectangles = [
+   { "x_axis": 0, "y_axis": 10, "height": 50, "width":500, "color" : "#428bca" },
+   { "x_axis": 500, "y_axis": 10, "height": 50, "width":300, "color" : "#E95D4E" }];
+
+ 
+ var svgContainer = d3.select("#viz").append("svg")
+                                     .attr("width", 800)
+                                     .attr("height", 50);
+ 
+var rectangles = svgContainer.selectAll("rect")
+                             .data(jsonRectangles)
+                             .enter()
+                             .append("rect");
+
+var rectangleAttributes = rectangles
+                          .attr("x", function (d) { return d.x_axis; })
+                          .attr("y", function (d) { return d.y_axis; })
+                          .attr("height", function (d) { return d.height; })
+                         .attr("width", function (d) { return d.width; })
+                          .style("fill", function(d) { return d.color; });
 </script>
