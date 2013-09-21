@@ -1,6 +1,6 @@
 
 <head>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+  <script type="text/javascript" src="/assets/application.js"></script>
 </head>
 
     
@@ -25,13 +25,13 @@ document.getElementById("demo").innerHTML="i die";
 
 <script type="text/javascript">
         var jsonRectangles = [
-   { "x_axis": 0, "y_axis": 10, "height": 50, "width":500, "color" : "#428bca" },
-   { "x_axis": 500, "y_axis": 10, "height": 50, "width":300, "color" : "#E95D4E" }];
+   { "x_axis": 0, "y_axis": 0, "height": 50, "width":500, "color" : "#428bca" },
+   { "x_axis": 500, "y_axis": 0, "height": 50, "width":300, "color" : "#E95D4E" }];
 
  
  var svgContainer = d3.select("#viz").append("svg")
                                      .attr("width", 800)
-                                     .attr("height", 50);
+                                     .attr("height", 40);
  
 var rectangles = svgContainer.selectAll("rect")
                              .data(jsonRectangles)
@@ -42,6 +42,6 @@ var rectangleAttributes = rectangles
                           .attr("x", function (d) { return d.x_axis; })
                           .attr("y", function (d) { return d.y_axis; })
                           .attr("height", function (d) { return d.height; })
-                         .attr("width", function (d) { return d.width; })
+                          .attr("width", function (d) { return d.width; })
                           .style("fill", function(d) { return d.color; });
 </script>

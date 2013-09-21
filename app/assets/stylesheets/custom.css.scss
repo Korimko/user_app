@@ -1,7 +1,7 @@
 @import "bootstrap";
 
 .hero-unit {
-  padding: 15px 20px 15px 20px
+  padding: 20px 15px 15px 15px
 }
 /* mixins, variables, etc. */
 
@@ -109,4 +109,8 @@ footer {
       margin-left: 10px;
     }
   }
+}
+
+svg {
+  border-radius: 5px;
 }
