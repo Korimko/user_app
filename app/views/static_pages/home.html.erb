@@ -40,7 +40,7 @@ text {
 
 </div>
 
-<%= link_to image_tag("derp-photo.jpg", alt: "Rails", width: "100", height: "100"), 'http://reddit.com/r/leagueoflegends/' %>
+<!--<%= link_to image_tag("derp-photo.jpg", alt: "Rails", width: "100", height: "100"), 'http://reddit.com/r/leagueoflegends/' %> -->
 
 <script>
 function myFunction()
@@ -78,7 +78,7 @@ var width = 869,
     height =940;
 
 var projection = d3.geo.mercator()
-  .center([136,-28])
+  .center([133,-29])
   .scale(1000)
   .translate([width / 2, height / 2])
   .precision(.1);
@@ -100,6 +100,8 @@ d3.json("assets/aus.json", function(error, aus) {
     .append("path")
     .attr("class", function(d) { return "subunit " + d.id; })
     .attr("d", path);
+
+    /*
   g.selectAll(".place")
     .data(topojson.object(aus, aus.objects.places).geometries)
   .enter().append("circle")
@@ -117,7 +119,7 @@ d3.json("assets/aus.json", function(error, aus) {
       .attr("dy", ".35em")
       .style("text-anchor", function(d) { return d.coordinates[0] > 135 ? "start" : "end"; })
       .text(function(d) { return d.properties.name; });
-
+  */
 });
 
 var zoom = d3.behavior.zoom()
