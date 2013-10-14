@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @twoPartyPreferred = AecDatum.getTwoPartyPreferred
   end
 
   def help

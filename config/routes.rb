@@ -1,4 +1,7 @@
 SampleApp::Application.routes.draw do
+  resources :aec_data
+
+
   get "users/new"
 
   

@@ -47,72 +47,29 @@ function myFunction()
 document.getElementById("demo").innerHTML="i die";
 }
 </script>
-<!--Voting bar starts here!-->
+
 <script type="text/javascript">
-  var testPreferredVotes = new Array({"labor" : "dummy","liberal" : "dummy"}
-    <% @twoPartyPreferred.each do |electorate| %>
-      ,{
-        "labor" : <%= electorate[0] %>,
-        "liberal" : <%= electorate[1] %>
-      }
-    <% end %>
-  );
-  var laborCount = 0;
-  var liberalCount = 0;
-  
-  var twoPartyPreferredCount = function() {
-    for (var i = 0; i < testPreferredVotes.length; i++) {
-      if (testPreferredVotes[i].labor > testPreferredVotes[i].liberal) {
-        laborCount += 1;
-      } else {
-        liberalCount += 1;
-      }
-    }
-  };
-  twoPartyPreferredCount();
-  console.log("Labor count is " + laborCount);
-  console.log("Liberal count is " + liberalCount);
-	var svgWidth = 800;
-	var svgHeight = 40;
-    var barParties = [
-		{ "votes":liberalCount, "color" : "#428bca" },
-		{ "votes":0, "color" : "#E95D4E" },
-		{ "votes":0, "color" : "#E92DAF" },
-		{ "votes":laborCount, "color" : "#E30D4E" }
-	];
-	var totalVotes = function() {
-						var output = 0;
-						for (var i = 0; i < barParties.length; i++) {
-							output += barParties[i].votes;
-						}
-						return output;
-					};
-	
-	var widthScale = d3.scale.linear()
-					.domain([0,totalVotes()])
-					.range([0,svgWidth]);
+        var jsonRectangles = [
+   { "x_axis": 0, "y_axis": 0, "height": 50, "width":500, "color" : "#428bca" },
+   { "x_axis": 500, "y_axis": 0, "height": 50, "width":300, "color" : "#E95D4E" }];
+
  
-	var svg = d3.select("#viz").append("svg")
-                .attr("width", svgWidth)
-                .attr("height", svgHeight);
+ var svgContainer = d3.select("#viz").append("svg")
+                                     .attr("width", 800)
+                                     .attr("height", 40);
  
-	var rectangles = svg.selectAll("rect")
-                            .data(barParties)
-                            .enter()
-                            .append("rect")
-	                        .attr("x", function (d, i) {
-								var output = 0;
-								for (var j = 0; j < i; j++) {
-									output += widthScale(barParties[j].votes);
-								}
-								return output;
-							})
-							.attr("y", 0)
-							.attr("height", svgHeight)
-							.attr("width", function (d) { return widthScale(d.votes); })
-							.style("fill", function(d) { return d.color; });
+var rectangles = svgContainer.selectAll("rect")
+                             .data(jsonRectangles)
+                             .enter()
+                             .append("rect");
+
+var rectangleAttributes = rectangles
+                          .attr("x", function (d) { return d.x_axis; })
+                          .attr("y", function (d) { return d.y_axis; })
+                          .attr("height", function (d) { return d.height; })
+                          .attr("width", function (d) { return d.width; })
+                          .style("fill", function(d) { return d.color; });
 </script>
-<!--Voting bar ends here!-->
 
 <script>
 
